@@ -46,17 +46,11 @@ def dcm2ct(slices):
         
     """
     # stack slices
-    images = np.stack([file.pixel_array for file in slices])
-    images = images.astype(np.int16)
-    
-    # convert to HU
-    intercept = slices[0].RescaleIntercept
-    slope = slices[0].RescaleSlope
-    hu_images = images.astype(np.float64) * slope + intercept
-    hu_images = set_outside_scanner_to_air(hu_images.astype(np.int16))
-    
-    # return header of first dicom and stacked CT slices
-    return hu_images
+    # Modality LUT: convert to HU
+    hu_images = np.stack([apply_modality_lut(s.pixel_array, s) for s in slices])
+    # Pixel Padding Value
+    hu_images = set_outside_scanner_to_air(hu_images)
+    return hu_images.astype(np.int16)
 
 
 def ct_loader(patient_folder_path):

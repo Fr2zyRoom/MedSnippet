@@ -8,3 +8,7 @@
     - ./util/visualize: Image visualize tool
     - ./drrtools/load_drr: Generate DRR(Digitally Reconstructed Radiograph) from CT
     - ./tools/load_nifti: Load Nifti file
+    
+- *News (2023-01-26)*: 
+    - ./cxrtools/load_cxr: Load CXR images (Updated)
+    - ./cttools/load_ct: Load CT images (Updated)
