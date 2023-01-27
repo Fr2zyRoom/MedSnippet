@@ -1,5 +1,6 @@
 import numpy as np
 import pydicom
+from pydicom.pixel_data_handlers import apply_modality_lut
 from util.util import *
 
 
