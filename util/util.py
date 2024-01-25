@@ -71,7 +71,7 @@ def normalize(arr, bit8=False):
     """
     arr_norm = arr - np.min(arr)
     if np.max(arr_norm) != 0:
-        arr_norm /= np.max(arr_norm)
+        arr_norm = arr_norm / np.max(arr_norm)
     if bit8 == True:
         arr_norm = np.array(arr_norm*255).astype(np.uint8)
     return arr_norm
