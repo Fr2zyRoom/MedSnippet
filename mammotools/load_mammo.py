@@ -64,7 +64,7 @@ def standard_mammography_loader(path, voi_lut=False, get_roi=False):
         if dcm_info.get('PixelPaddingValue'):
             roi_img = dcm_img!=dcm_info.PixelPaddingValue
         else:
-            roi_img = dcm_img>np.median(dcm_img)+dcm_img.mean()*0.1
+            roi_img = dcm_img>np.median(dcm_img)+dcm_img.mean()*0.2
 
         label_img = split_island(roi_img)
 
